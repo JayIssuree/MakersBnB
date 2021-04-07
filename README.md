@@ -15,7 +15,7 @@ We would like a web application that allows users to list spaces they have avail
 ### User Stories:
 
 ```
-As a user, so thtat I can use the service, I would like to sign up with a username, email and password
+As a user, so that I can use the service, I would like to sign up with a username, email and password
 ```
 
 ### Nice-to-haves
