@@ -31,8 +31,11 @@ class MakersBnB < Sinatra::Base
         if user.save
             session[:user_id] = user.id
             redirect '/homepage'
+        elsif (params[:email].empty? || params[:username].empty? || params[:password].empty? || params[:password_confirmation].empty?)
+            flash[:notice] = "Please fill in all fields"
+            redirect '/users/new'
         else
-            flash[:notice] = params[:password] != params[:password_confirmation] ? "Passwords do not match" : "Email or Username already taken"
+            flash[:notice] = params[:password] != params[:password_confirmation] ? "Passwords do not match" : "Username or Email already taken"
             redirect '/users/new'
         end
     end

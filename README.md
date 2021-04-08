@@ -17,6 +17,12 @@ We would like a web application that allows users to list spaces they have avail
 ```
 As a user, so that I can use the service, I would like to sign up with a username, email and password
 ```
+```
+As a user, so that someone else can use the service, I would like to log out
+```
+```
+As a user, so that I can use the service, I would like to log in
+```
 
 ### Nice-to-haves
 
