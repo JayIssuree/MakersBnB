@@ -6,6 +6,7 @@ require './models/user'
 class MakersBnB < Sinatra::Base
 
     enable :sessions
+    use Rack::MethodOverride
     register Sinatra::Flash
 
     get '/' do
@@ -38,6 +39,11 @@ class MakersBnB < Sinatra::Base
             flash[:notice] = params[:password] != params[:password_confirmation] ? "Passwords do not match" : "Username or Email already taken"
             redirect '/users/new'
         end
+    end
+
+    delete '/session' do
+        session.clear
+        redirect '/homepage'
     end
     
     run! if app_file == $0

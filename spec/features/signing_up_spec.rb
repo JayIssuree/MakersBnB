@@ -66,4 +66,15 @@ describe "signing up", type: :feature do
         expect(page).to have_content("Please fill in all field")
     end
 
+    it "does not contain the sign up button when already signed in" do
+        visit('/users/new')
+        fill_in("email", with: "mail@test.com")
+        fill_in("username", with: "username123")
+        fill_in("password", with: "password123")
+        fill_in("password_confirmation", with: "password123")
+        click_button("Create Account")
+        expect(page.current_path).to eq('/homepage')
+        expect(page).to have_no_button("Sign Up")
+    end
+
 end
