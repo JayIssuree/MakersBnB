@@ -1,3 +1,5 @@
+ENV["RACK_ENV"] = 'test'
+
 require './app'
 require 'capybara/rspec'
 
@@ -102,4 +104,11 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.formatter = :documentation
+
+  config.before(:each) do
+    ActiveRecord::Base.connection.execute("TRUNCATE users")
+  end
+
 end

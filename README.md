@@ -35,3 +35,11 @@ As a user, so that I can use the service, I would like to sign up with a usernam
  - Their request to book a space is denied
 - A ‘chat’ functionality once a space has been booked, allowing users whose space-booking request has been confirmed to chat with the user that owns that space
 - Basic payment implementation though Stripe.
+
+### Setting up the Database
+
+From the command line in the project directory run the following:
+```
+rake db:create
+```
+This creates the databases in the config/database.yml file

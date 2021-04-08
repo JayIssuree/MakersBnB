@@ -11,10 +11,11 @@ end
 
 group :development do
     gem 'sinatra'
-
+    gem 'sinatra-flash'
 end
 
 group :test, :development do
+    gem 'bcrypt'
     gem 'pg'
     gem 'rake'
     gem 'sinatra-activerecord'

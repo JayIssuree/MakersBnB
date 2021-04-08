@@ -1,1 +1,9 @@
 <h1> Makers BnB </h1>
+<% if @user %>
+    Signed in as: <%= @user.username %>
+<% end %>
+<div>
+    <form action=users/new method=get>
+        <input type=submit value="Sign Up">
+    </form>
+</div>
