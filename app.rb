@@ -45,6 +45,21 @@ class MakersBnB < Sinatra::Base
         session.clear
         redirect '/homepage'
     end
+
+    get '/session/new' do
+        erb(:'session/new')
+    end
+
+    post '/session' do
+        user = User.find_by(email: params[:email])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect '/homepage'
+        else
+            flash[:notice] = "Incorrect Email or Password"
+            redirect '/session/new'
+        end
+    end
     
     run! if app_file == $0
 
