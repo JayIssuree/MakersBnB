@@ -15,13 +15,14 @@ We would like a web application that allows users to list spaces they have avail
 ### User Stories:
 
 ```
+Signing Up & Logging In/Out:
 As a user, so that I can use the service, I would like to sign up with a username, email and password
-```
-```
 As a user, so that someone else can use the service, I would like to log out
-```
-```
 As a user, so that I can use the service, I would like to log in
+```
+```
+Listing Spaces:
+As a user, so I can have customers, I would like to be able to list a space
 ```
 
 ### Nice-to-haves
