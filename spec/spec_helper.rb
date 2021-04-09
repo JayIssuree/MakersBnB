@@ -2,6 +2,7 @@ ENV["RACK_ENV"] = 'test'
 
 require './app'
 require 'capybara/rspec'
+require './spec/features/web_helpers.rb'
 
 Capybara.app = MakersBnB
 
@@ -108,7 +109,7 @@ RSpec.configure do |config|
   config.formatter = :documentation
 
   config.before(:each) do
-    ActiveRecord::Base.connection.execute("TRUNCATE users")
+    ActiveRecord::Base.connection.execute("TRUNCATE users, listings")
   end
 
 end

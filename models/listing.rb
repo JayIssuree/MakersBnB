@@ -1,0 +1,9 @@
+class Listing < ActiveRecord::Base
+
+    belongs_to :user
+
+    validates :name, presence: true
+    validates :description, presence: true
+    validates :ppn, presence: true
+
+end

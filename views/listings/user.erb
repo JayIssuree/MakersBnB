@@ -1,0 +1,9 @@
+<form action=/listings/new>
+    <input type=submit value="Add Listing">
+</form>
+
+<% @user_listings.each do |listing| %>
+    <%= listing.name %>
+    <%= listing.description %>
+    £:<%= listing.ppn %>
+<% end %>

@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
 require './models/user'
+require './models/listing'
 
 class MakersBnB < Sinatra::Base
 
@@ -60,7 +61,26 @@ class MakersBnB < Sinatra::Base
             redirect '/session/new'
         end
     end
+
+    get '/listings' do
+        @user_listings = User.find(session[:user_id]).listings
+        erb(:'listings/user')
+    end
+
+    get '/listings/new' do
+        erb(:'listings/new')
+    end
     
+    post '/listings' do
+        Listing.create(
+            user_id: session[:user_id],
+            name: params[:name],
+            description: params[:description],
+            ppn: params[:ppn]
+        )
+        redirect '/listings'
+    end
+
     run! if app_file == $0
 
 end
