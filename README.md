@@ -22,7 +22,8 @@ As a user, so that I can use the service, I would like to log in
 ```
 ```
 Listing Spaces:
-As a user, so I can have customers, I would like to be able to list a space
+As a user, so I can have customers, I would like to be able to post a listing
+As a user, so I can have customers, I would like to be able to list the dates available for booking
 ```
 
 ### Nice-to-haves
