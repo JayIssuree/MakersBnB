@@ -3,6 +3,7 @@ require 'sinatra/activerecord'
 require 'sinatra/flash'
 require './models/user'
 require './models/listing'
+require './lib/date_checker'
 
 class MakersBnB < Sinatra::Base
 
@@ -72,13 +73,20 @@ class MakersBnB < Sinatra::Base
     end
     
     post '/listings' do
-        Listing.create(
-            user_id: session[:user_id],
-            name: params[:name],
-            description: params[:description],
-            ppn: params[:ppn]
-        )
-        redirect '/listings'
+        if DateChecker.check(start_date: params[:start_date], end_date: params[:end_date])
+            Listing.create(
+                user_id: session[:user_id],
+                name: params[:name],
+                description: params[:description],
+                ppn: params[:ppn],
+                start_date: DateChecker.convert(params[:start_date]),
+                end_date: DateChecker.convert(params[:end_date])
+            )
+            redirect '/listings'
+        else
+            flash[:notice] = "Please make sure the available dates are correct"
+            redirect '/listings/new'
+        end
     end
 
     run! if app_file == $0

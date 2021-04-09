@@ -3,7 +3,11 @@
 </form>
 
 <% @user_listings.each do |listing| %>
-    <%= listing.name %>
-    <%= listing.description %>
-    £:<%= listing.ppn %>
+    <div>
+        <%= listing.name %>
+        <%= listing.description %>
+        £:<%= listing.ppn %>
+        Start Date: <%= listing.start_date %>
+        End Date: <%= listing.end_date %>
+    </div>
 <% end %>

@@ -1,6 +1,11 @@
+<%= flash[:notice] %>
+
 <form action='/listings' method=post>
     <input type=text name=name placeholder=name>
     <input type=text name=description placeholder=description>
     <input type=number name=ppn placeholer=ppn>
+    <input type=date name=start_date value=<%= Time.now %>>
+    -
+    <input type=date name=end_date value=<%= Time.now %>>
     <input type=submit value="Create Listing">
 </form>
