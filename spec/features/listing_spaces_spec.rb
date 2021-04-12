@@ -1,4 +1,8 @@
 describe "listing spaces", type: :feature do
+
+    let(:today) { Time.now.to_s[0, 10] }
+    let(:next_week) { (Time.now + (60 * 60 * 24 * 7)).to_s[0, 10] }
+    let(:yesterday) { (Time.now - (60 * 60 * 24)).to_s[0,10] }
     
     it 'has a button when logged in where users can manage their listings' do
         expect(page).to have_no_button("Manage Listings")
@@ -36,15 +40,15 @@ describe "listing spaces", type: :feature do
         fill_in("name", with: "example listing name")
         fill_in("description", with: "example listing description")
         fill_in("ppn", with: 40)
-        fill_in("start_date", with: "2021-04-09")
-        fill_in("end_date", with: "2021-04-20")
+        fill_in("start_date", with: today)
+        fill_in("end_date", with: next_week)
         click_button("Create Listing")
         expect(page.current_path).to eq("/listings")
         expect(page).to have_content("example listing name")
         expect(page).to have_content("example listing description")
         expect(page).to have_content("40")
-        expect(page).to have_content("Start Date: 2021-04-09")
-        expect(page).to have_content("End Date: 2021-04-20")
+        expect(page).to have_content("Start Date: #{today}")
+        expect(page).to have_content("End Date: #{next_week}")
     end
 
     it "does not list a space if the end date is before the start date" do
@@ -55,8 +59,23 @@ describe "listing spaces", type: :feature do
         fill_in("name", with: "example listing name")
         fill_in("description", with: "example listing description")
         fill_in("ppn", with: 40)
-        fill_in("start_date", with: "2021-04-09")
-        fill_in("end_date", with: "2021-04-01")
+        fill_in("start_date", with: today)
+        fill_in("end_date", with: yesterday)
+        click_button("Create Listing")
+        expect(page.current_path).to eq("/listings/new")
+        expect(page).to have_content("Please make sure the available dates are correct")
+    end
+
+    it "does not list a space for dates in the past" do
+        log_in
+        user = User.find_by(username: "username")
+        click_button("Manage Listings")
+        click_button("Add Listing")
+        fill_in("name", with: "example listing name")
+        fill_in("description", with: "example listing description")
+        fill_in("ppn", with: 40)
+        fill_in("start_date", with: yesterday)
+        fill_in("end_date", with: next_week)
         click_button("Create Listing")
         expect(page.current_path).to eq("/listings/new")
         expect(page).to have_content("Please make sure the available dates are correct")
