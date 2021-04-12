@@ -25,6 +25,10 @@ Listing Spaces:
 As a user, so I can have customers, I would like to be able to post a listing
 As a user, so I can have customers, I would like to be able to list the dates available for booking
 ```
+```
+Booking:
+As a user, so I can book a place to stay, I would like to be able to see all available listings
+```
 
 ### Nice-to-haves
 
