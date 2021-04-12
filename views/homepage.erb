@@ -22,3 +22,24 @@
         </form>
     </div>
 <% end %>
+
+<div>
+    <table>
+        <tr>
+            <th> Name </th>
+            <th> Description </th>
+            <th> PPN </th>
+            <th> Start Date </th>
+            <th> End Date </th>
+        </tr>
+        <% @listings.each do |listing| %>
+            </tr>
+            <td> <%= listing.name %> </td>
+                <td> <%= listing.description %> </td>
+                <td> £:<%= listing.ppn %> </td>
+                <td> <%= listing.start_date %> </td>
+                <td> <%= listing.end_date %> </td>
+            </tr>
+        <% end %>
+    </table>
+</div>

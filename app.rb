@@ -17,6 +17,7 @@ class MakersBnB < Sinatra::Base
 
     get '/homepage' do
         @user = User.find(session[:user_id]) if session[:user_id]
+        @listings = Listing.all
         erb(:homepage)
     end
 

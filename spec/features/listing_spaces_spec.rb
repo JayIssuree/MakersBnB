@@ -47,8 +47,8 @@ describe "listing spaces", type: :feature do
         expect(page).to have_content("example listing name")
         expect(page).to have_content("example listing description")
         expect(page).to have_content("40")
-        expect(page).to have_content("Start Date: #{today}")
-        expect(page).to have_content("End Date: #{next_week}")
+        expect(page).to have_content("#{today}")
+        expect(page).to have_content("#{next_week}")
     end
 
     it "does not list a space if the end date is before the start date" do
