@@ -18,6 +18,7 @@ describe "viewing listings", type: :feature do
         expect(page).to have_content("25")
         expect(page).to have_content("#{today}")
         expect(page).to have_content("#{next_week}")
+        expect(page).to have_button("Log In to Book")
     end
 
 end

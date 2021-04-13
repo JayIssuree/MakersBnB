@@ -39,6 +39,17 @@
                 <td> £:<%= listing.ppn %> </td>
                 <td> <%= listing.start_date %> </td>
                 <td> <%= listing.end_date %> </td>
+                <td>
+                <% if @user %>
+                    <form>
+                        <input type=submit value="Book Now">
+                    </form>
+                <% else %>
+                    <form action=session/new method=get>
+                        <input type=submit value="Log In to Book">
+                    </form>
+                <% end %>
+                </td>
             </tr>
         <% end %>
     </table>
