@@ -34,14 +34,14 @@
         </tr>
         <% @listings.each do |listing| %>
             </tr>
-            <td> <%= listing.name %> </td>
+                <td> <%= listing.name %> </td>
                 <td> <%= listing.description %> </td>
                 <td> £:<%= listing.ppn %> </td>
                 <td> <%= listing.start_date %> </td>
                 <td> <%= listing.end_date %> </td>
                 <td>
                 <% if @user %>
-                    <form>
+                    <form action="/booking/<%= listing.id %>">
                         <input type=submit value="Book Now">
                     </form>
                 <% else %>
