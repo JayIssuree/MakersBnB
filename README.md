@@ -31,7 +31,8 @@ As a user, so I can book a place to stay, I would like to be able to see all ava
 As a user, so I can book a place to stay, I would like to see the dates available for the listing I have selected
 As a user, so I can book a place to stay, I would like to send a request to stay for a specific date at the listing
 As a user, so I can decide who stays at my property and when, I would like to see all requests for my listings
-As a user, so I can decide who stays at my property and when, I would like to approve/deny any request
+As a user, so I can decide who stays at my property and when, I would like to approve any request
+As a user, so I can book a place to stay, I would like to confirm any approved requests
 ```
 
 ### Nice-to-haves
