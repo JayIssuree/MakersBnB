@@ -37,7 +37,8 @@
                 <td> <%= request.booking.date.strftime('%Y-%m-%d') %> </td>
                 <td> <%= User.find(request.user_id).username %> </td>
                 <td>
-                    <form>
+                    <form action=/approve/request method=post>
+                        <input type=hidden name=request_id value=<%= request.id %>>
                         <input type=submit value=Approve>
                     </form>
                 </td>

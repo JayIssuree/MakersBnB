@@ -3,7 +3,9 @@ next_week = (Time.now + (60 * 60 * 24 * 7)).to_s[0, 10]
 yesterday = (Time.now - (60 * 60 * 24)).to_s[0,10]
 
 def log_in
-    User.create(username: "username", email: "mail@mail.com", password: "password123")
+    if User.find_by(username: 'username') == nil
+        User.create(username: "username", email: "mail@mail.com", password: "password123")
+    end
     visit('/session/new')
     fill_in("email", with: "mail@mail.com")
     fill_in("password", with: "password123")
@@ -11,7 +13,9 @@ def log_in
 end
 
 def log_in_2
-    User.create(username: "username2", email: "mail2@mail2.com", password: "password123")
+    if User.find_by(username: 'username2') == nil
+        User.create(username: "username2", email: "mail2@mail2.com", password: "password123")
+    end
     visit('/session/new')
     fill_in("email", with: "mail2@mail2.com")
     fill_in("password", with: "password123")

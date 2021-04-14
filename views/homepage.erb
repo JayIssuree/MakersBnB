@@ -54,3 +54,32 @@
         <% end %>
     </table>
 </div>
+
+<div>
+    <% if @outgoing_requests == nil %>
+            You Have No Outgoing Requests
+    <% else %>
+        <table>
+            <% @outgoing_requests.each do |request| %>
+                <tr>
+                    <th> Name </th>
+                    <th> Date </th>
+                    <th> Status </th>
+                </tr>
+                </tr>
+                    <td> <%= request.booking.listing.name %> </td>
+                    <td> <%= request.booking.date.strftime('%Y-%m-%d') %> </td>
+                    <td> 
+                        <% if request.approved %>
+                            <form>
+                                <input type=submit value=Confirm>
+                            </form>
+                        <% else %>
+                            Waiting for Approval
+                        <% end %> 
+                    </td>
+                </tr>
+            <% end %>
+        </table>
+    <% end %>
+</div>

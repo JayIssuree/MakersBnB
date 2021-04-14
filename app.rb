@@ -20,6 +20,7 @@ class MakersBnB < Sinatra::Base
     get '/homepage' do
         @user = User.find(session[:user_id]) if session[:user_id]
         @listings = Listing.all
+        @outgoing_requests = Request.where(user_id: session[:user_id])
         erb(:homepage)
     end
 
@@ -103,6 +104,11 @@ class MakersBnB < Sinatra::Base
     post '/request/:booking_id' do
         request = Request.create(user_id: session[:user_id], booking_id: params[:booking_id])
         redirect "/booking/#{request.booking.listing.id}"
+    end
+
+    post '/approve/request' do
+        Request.find(params[:request_id]).toggle!(:approved)
+        redirect '/listings'
     end
 
     run! if app_file == $0
