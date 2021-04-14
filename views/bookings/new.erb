@@ -1,8 +1,8 @@
-<% @available_dates.each do |date| %>
+<% @available_dates.each do |booking| %>
     </tr>
-        <td> <%= date.date %> </td>
+        <td> <%= booking.date %> </td>
         <td>
-            <form>
+            <form action=/request/<%= booking.id %> method=post>
                 <input type=submit value="Send Request">
             </form>
         </td>

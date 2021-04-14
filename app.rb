@@ -4,6 +4,7 @@ require 'sinatra/flash'
 require './models/user'
 require './models/listing'
 require './models/booking'
+require './models/request'
 require './lib/date_checker'
 
 class MakersBnB < Sinatra::Base
@@ -66,7 +67,9 @@ class MakersBnB < Sinatra::Base
     end
 
     get '/listings' do
-        @user_listings = User.find(session[:user_id]).listings
+        user = User.find(session[:user_id])
+        @user_listings = user.listings
+        @requests = user.requests
         erb(:'listings/user')
     end
 
@@ -95,6 +98,11 @@ class MakersBnB < Sinatra::Base
         redirect '/homepage' unless session[:user_id]
         @available_dates = Booking.where(["listing_id = ? and booked = ?", params[:listing_id], false])
         erb(:'/bookings/new')
+    end
+
+    post '/request/:booking_id' do
+        request = Request.create(user_id: session[:user_id], booking_id: params[:booking_id])
+        redirect "/booking/#{request.booking.listing.id}"
     end
 
     run! if app_file == $0

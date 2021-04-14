@@ -3,6 +3,8 @@ require_relative 'booking'
 class Listing < ActiveRecord::Base
 
     belongs_to :user
+    has_many :bookings
+    has_many :requests, :through => :bookings
 
     validates :user_id, presence: true
     validates :name, presence: true

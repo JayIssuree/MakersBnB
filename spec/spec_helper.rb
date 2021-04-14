@@ -109,7 +109,7 @@ RSpec.configure do |config|
   config.formatter = :documentation
 
   config.before(:each) do
-    ActiveRecord::Base.connection.execute("TRUNCATE users, listings, bookings")
+    ActiveRecord::Base.connection.execute("TRUNCATE users, listings, bookings, requests")
   end
 
 end

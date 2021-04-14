@@ -22,3 +22,26 @@
         <% end %>
     </table>
 </div>
+
+<div>
+    <table>
+        <tr>
+            <th> Listing </th>
+            <th> Date </th>
+            <th> User </th>
+            <th> Status </th>
+        </tr>
+        <% @requests.each do |request| %>
+            </tr>
+                <td> <%= request.booking.listing.name %> </td>
+                <td> <%= request.booking.date.strftime('%Y-%m-%d') %> </td>
+                <td> <%= User.find(request.user_id).username %> </td>
+                <td>
+                    <form>
+                        <input type=submit value=Approve>
+                    </form>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>
