@@ -107,7 +107,9 @@ class MakersBnB < Sinatra::Base
     end
 
     post '/approve/request' do
-        Request.find(params[:request_id]).toggle!(:approved)
+        request = Request.find(params[:request_id])
+        request.toggle!(:approved)
+        request.booking.toggle!(:booked)
         redirect '/listings'
     end
 

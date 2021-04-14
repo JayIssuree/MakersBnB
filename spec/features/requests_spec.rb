@@ -31,4 +31,18 @@ describe "requests", type: :feature do
         expect(page).to have_button("Confirm")
     end
 
+    it "does not display the date for a confirmed booking" do
+        create_account_and_listings
+        log_in_2
+        first(:button, 'Book Now').click
+        first(:button, 'Send Request').click
+        log_in
+        click_button("Manage Listings")
+        click_button("Approve")
+        log_in_2
+        click_button("Confirm")
+        first(:button, 'Book Now').click
+        expect(page).to have_no_content(today)
+    end
+
 end
