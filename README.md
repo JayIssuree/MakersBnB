@@ -33,6 +33,7 @@ As a user, so I can book a place to stay, I would like to send a request to stay
 As a user, so I can decide who stays at my property and when, I would like to see all requests for my listings
 As a user, so I can decide who stays at my property and when, I would like to approve any request
 As a user, so I can book a place to stay, I would like to confirm any approved requests
+As a user, so I don't double book, I would like confirmed booking dates not to show up
 ```
 
 ### Nice-to-haves
